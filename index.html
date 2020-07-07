@@ -13,12 +13,10 @@
 </head>
 
 <body>
-    <header>
-        Number guessing game
-    </header>
-    <p>Try to guess a number between 1 and 20 within four tries!</p>
     <main>
         <section>
+            <span>Try to guess a number between 1 and 20 within four tries!</span>
+            <br>
             <label for="user-input">Please select a number:</label>
             <input type="number" id="number-goes-here" min="1" max="20">
             <br>
@@ -30,11 +28,9 @@
             <br>
             <span id="user-guessed"></span>
         </section>
-    </main>
-    <footer>
         <section id="final-results"></section>
-        <input type="reset" class="button" id="reset-button">
-    </footer>
+        <input type="reset" class="button" value="Reset the game?" id="reset-button">
+    </main>
 
     <script type="module" src="app.js"></script>
 </body>
