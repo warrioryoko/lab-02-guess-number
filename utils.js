@@ -12,3 +12,4 @@ export function compareNumbers(guess, correctNumber) {
     alert('somehow you managed to get a value that is not a number...');
   }
 }
+
