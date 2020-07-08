@@ -7,11 +7,37 @@ const guessesLeft = document.getElementById('guesses-left');
 const userGuessedInput = document.getElementById('user-guessed');
 const finalResults = document.getElementById('final-results');
 const resetButton = document.getElementById('reset-button');
+const interactArea = document.getElementById('interact-area');
+const endGameText = document.getElementById('end-game-text');
+const winsLossesText = document.getElementById('wins-losses');
+const guessMessageArea = document.getElementById('guess-message');
 // initialize state
-const correctNumber = Math.ceil(Math.random() * 20);
+let correctNumber = Math.ceil(Math.random() * 20);
 console.log(correctNumber);
 let guessCount = 4;
+let gameWins = 0;
+let gameLosses = 0;
+handleGuessUpdate();
 // set event listeners to update state and DOM
+
+function resetCorrectNumber() {
+  correctNumber = Math.ceil(Math.random() * 20);
+  console.log(correctNumber);
+}
+
+function handleGuessUpdate() {
+  guessesLeft.textContent = `${guessCount} guesses left...`;
+}
+
+function disableGame() {
+  interactArea.classList.add("hidden");
+  guessMessageArea.classList.add("hidden");
+}
+
+function enableGame() {
+  interactArea.classList.remove("hidden");
+  guessMessageArea.classList.remove("hidden");
+}
 
 function handleGuess() {
   const userGuessed = Number(userInput.value);
@@ -20,19 +46,26 @@ function handleGuess() {
   console.log(comparisonResult);
 
   function guessMatch() {
-    finalResults.textContent = "You guessed right! You win!"
+    gameWins++;
+    console.log(gameWins);
+    endGameText.textContent = "You guessed right! You win!"; 
+    winsLossesText.textContent = `Wins: ${gameWins} Losses: ${gameLosses}`;
+    disableGame();
   }
     
   function wrongGuess() {
     guessCount--;
     if (guessCount <= 0) {
       noGuessesLeft();
-      setTimeout(resetTheGame(), 3000);
     }
   }
   
   function noGuessesLeft() {
-    finalResults.textContent = "Wrong again... and you're out of guesses! You Lose!";
+    gameLosses++;
+    console.log(gameLosses);
+    endGameText.textContent = "Wrong again... and you're out of guesses! You Lose!";
+    winsLossesText.textContent = `Wins: ${gameWins} Losses: ${gameLosses}`;
+    disableGame();
   }
   
   function handleDisplay(result) {
@@ -64,7 +97,12 @@ const resetTheGame = () => {
   const doReset = window.confirm('Would you like to play again?');
 
   if (doReset === true) {
-      document.location.reload();
+      //document.location.reload();
+      guessCount = 4;
+      endGameText.textContent = "";
+      resetCorrectNumber();
+      enableGame();
+
   } else {
       return false;
   }

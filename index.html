@@ -14,7 +14,7 @@
 
 <body>
     <main>
-        <section>
+        <section id="interact-area">
             <span>Try to guess a number between 1 and 20 within four tries!</span>
             <br>
             <label for="user-input">Please select a number:</label>
@@ -23,12 +23,15 @@
             <input type="submit" class="button" id="press-button">
             <br>
         </section>
-        <section>
-            <span id="guesses-left">guesses left</span>
+        <section id="guess-message">
+            <span id="guesses-left"></span>
             <br>
             <span id="user-guessed"></span>
         </section>
-        <section id="final-results"></section>
+        <section id="final-results">
+            <span id="end-game-text"></span>
+            <span id="wins-losses"></span>
+        </section>
         <input type="reset" class="button" value="Reset the game?" id="reset-button">
     </main>
 

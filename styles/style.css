@@ -74,6 +74,10 @@ h2 {
     animation: pulse 5s infinite ease-in-out;
 }
 
+.hidden {
+    display: none;
+}
+
 header img {
     height: var(--header-height);
 }
